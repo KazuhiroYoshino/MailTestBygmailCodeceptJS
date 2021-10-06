@@ -15,12 +15,12 @@ Data(emailTestTable).Scenario('eMail_Test', async ({I , current}) => {
     var xp = require('../ext_program.js');
 
 //inbox待受け
-    startMessage = await gi.run3("ココにgmailのID","ココにgmailのパスワード");
+    startMessage = await gi.run3("mogumogutabeta1211@gmail.com","MoguMogu1211");
     I.wait(2);
     console.log(startMessage);
 
 //テスト用メール送信
-    var sendMail = xp.runSendMail("テストに使うgmailアドレス",current.会員ランク,current.Subject,current.会員氏名,current.会員ID,current.url,null);
+    var sendMail = xp.runSendMail("mogumogutabeta1211@gmail.com",current.会員ランク,current.Subject,current.会員氏名,current.会員ID,current.url,null);
 //ここまで
 
 //メール受信検証
@@ -32,7 +32,7 @@ Data(emailTestTable).Scenario('eMail_Test', async ({I , current}) => {
 //文面の文言検証
     I.assertContain(mail, current.verifyWord);
     const memberid = await mail.match(/[A-Za-z0-9_.-]*@example.com/)[0];
-    const url = await mail.match(/https?:\/\/(.*?)\/login.html/)[0];
+    const url = await mail.match(/(https?|ftp)(:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+)/g)[0];
 
 //文面から取得したURLに移動
     I.amOnPage(url);

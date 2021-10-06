@@ -9,7 +9,7 @@ exports.config = {
   output: './output',
   helpers: {
     WebDriver: {
-      url: 'http://localhost',
+      url: 'https://hotel.testplanisphere.dev/ja/',
       browser: 'chrome'
     },
     "ChaiWrapper" : {
@@ -41,4 +41,8 @@ exports.config = {
       enabled: true
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop
